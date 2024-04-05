@@ -1,0 +1,29 @@
+.header{
+   color:rgba(146, 20, 20, 0.532);
+   font-size: 40px; 
+}
+
+.footer{
+   color:rgba(14, 14, 39, 0.81);
+   font-size: 40px; 
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+}
+
+.div1{
+    height: 10rem;
+    width: 16rem;
+    background-color: blueviolet;
+    border-width: 5px;                  /*border ka motapa*/
+    border-style: solid;        /*border ka style, line , dotted, or bhi kaafi kuch*/
+    border-color: red;
+    border-radius: 4px;    /*border ka corner*/
+}
+
+span {
+   display: block;
+   margin: 50px 0;
+   padding: 0;
+   color: red;
+}

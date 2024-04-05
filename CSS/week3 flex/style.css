@@ -1,0 +1,71 @@
+#container{
+    height: auto;
+    width: 75vw;
+    background-color: cyan;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* this will put all the 4 div inside into seperate places */
+#container div {
+    height: 200px;
+    width: 200px; 
+}
+
+#div1{
+    background-color: red;
+}
+
+#div2{
+    background-color: blue;
+}
+
+#div3{
+    background-color: green;
+}
+
+#div4{
+    background-color: yellow;
+}
+
+#div5{
+    background-color: purple;
+}
+
+
+#container1{
+    height: 200px;
+    width: 500px;
+    background-color: cyan;
+    display: flex;
+}
+
+#container1 div {
+    height: 100px;
+    width: 100px; 
+}
+
+#div11{
+    background-color: purple;
+    flex-grow: 6;
+}
+
+#div12{
+    background-color: orange;
+    flex-grow:2;
+}
+
+#container12{
+    height: 40vh;
+    width: 50vw;
+    background-color: cyan;
+    display: flex;
+
+}
+
+/* this will put all the 4 div inside into seperate places */
+#container12 div {
+    height: 200px;
+    width: 200px; 
+}
