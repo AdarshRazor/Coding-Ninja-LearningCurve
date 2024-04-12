@@ -10,9 +10,27 @@ class MovieCard extends Component {
             rating : 8.9,
             stars : 0
         }
+
+        // One way of bind globally 
+        //this.addStars = this.addStars.bind(this);
     }
 
+    // new function to click
+    // addStars(){
+    //     this.setState({
+    //         rating : this.state.rating + 1
+    //     })
+    // }\
     addStars(){
+        //this.state.stars += 0.5;
+        //console.log("this", this) ;
+
+        //1st way
+        //this.setState({
+        //    stars : this.state.stars + 0.5
+        //})
+
+        //2nd way
         this.setState((prevState)=>{
             if(this.state.stars >=5){
                 return;
@@ -20,7 +38,7 @@ class MovieCard extends Component {
             return{
                 stars : prevState.stars + 0.5
             }
-
+            //below is the call back function to test async
         }, () => console.log("stars", this.state.stars));
     }
 
@@ -31,6 +49,7 @@ class MovieCard extends Component {
         }
         this.setState({
             stars : this.state.stars - 0.5
+            //below is the call back function to test async
         }, () => console.log("stars", this.state.stars));
     }
 
