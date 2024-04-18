@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import './App.css'
+import '../src/App.css'
 
-function App() {
+function IncreaseCount() {
   const [count, setCount] = useState(0)
 
   return (
@@ -13,4 +13,4 @@ function App() {
   )
 }
 
-export default App
+export default IncreaseCount
