@@ -2,8 +2,7 @@
 import {useState} from 'react'
 export default function Blog(){
     
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [formData, setformData] = useState({title: "", content: ""});
     //empty array to hold our title and content
     const [blogs, setblogs] = useState([]);
 
@@ -13,11 +12,9 @@ export default function Blog(){
         e.preventDefault();
 
         // Rest Operator in JS [...]
-        setblogs([{title, content},...blogs]);
+        setblogs([{title: formData.title, content: formData.content},...blogs]);
         // now we need to clear the input fields
-        setTitle("");
-        setContent("");
-        //console.log(blogs);
+        setformData({title: "", content: ""});
     }
 
     return(
@@ -35,8 +32,8 @@ export default function Blog(){
                 <Row label="Title">
                         <input className="input"
                                 placeholder="Enter the Title of the Blog here.."
-                                value={title}
-                                onChange = {(e) => setTitle(e.target.value)}
+                                value={formData.title}
+                                onChange = {(e) => setformData({title: e.target.value, content: formData.content})}
                                 />
                 </Row >
 
@@ -44,8 +41,8 @@ export default function Blog(){
                 <Row label="Content">
                         <textarea className="input content"
                                 placeholder="Content of the Blog goes here.."
-                                value = {content}
-                                onChange = {(e) => setContent(e.target.value)}
+                                value = {formData.content}
+                                onChange = {(e) => setformData({title: formData.title, content: e.target.value})}
                                 />
                 </Row >
 
