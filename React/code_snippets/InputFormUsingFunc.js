@@ -17,7 +17,7 @@ function Input(){
                     <input value={lastname} onChange={(e) => setLastname(e.target.value)}/>
                 </Row>
             </div>
-            <h2>Hello, {this.state.name + " " + this.state.lastname} </h2>
+            <h2>Hello, {name + " " + lastname} </h2>
         </>
     )
 }
