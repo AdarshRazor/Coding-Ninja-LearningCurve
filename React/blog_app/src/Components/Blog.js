@@ -17,7 +17,11 @@ export default function Blog(){
         // now we need to clear the input fields
         setTitle("");
         setContent("");
-        //console.log(blogs);
+    }
+
+    function removeBlog(i){
+            
+        setblogs(blogs.filter((blog,index) => i!==index))
     }
 
     return(
@@ -63,6 +67,13 @@ export default function Blog(){
             <div className='blog' key={i}>
                 <h3>{blog.title}</h3>
                 <p>{blog.content}</p>
+
+                <div className='blog-btn'>
+                    <button onClick={() => removeBlog(i)} className='btn remove'>
+                        Delete
+                    </button>
+                </div>
+
             </div>
         ))}
         </>
