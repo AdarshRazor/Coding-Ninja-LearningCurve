@@ -1,3 +1,5 @@
+## Procedure
+
 create the project
 
 add the css and js files to the project
@@ -19,3 +21,10 @@ now bring all the action creators in one file > state/index.js
 now create a store for the reducer > state/store.js
 
 now provide the store access to the whole app. > index.js
+
+
+
+
+## TroubleShooting
+
+![image](https://github.com/AdarshRazor/Coding-Ninja-LearningCurve/assets/33658792/b8ee8bcc-78af-4b55-985c-56a879951eff)
