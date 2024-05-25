@@ -16,6 +16,32 @@ Create the reducers in the
 
 ## Create Store
 
+import redux
+
 create store in redux
 
 ## Providing store access
+
+we need to import {Provider} from react-redux
+
+wrap only those compoenet where you want to use the store
+
+import store in the page too
+
+## Using Selector to change the value
+
+how to read data from the store
+
+first define some initial values. do that in intialState
+
+right now TodoList is reponsible for displaying the list and it is getting the props from its parents which is App.js State.
+
+Now we need to get the todos data from store, not from parent. SO, remove from props
+
+useSelector hook to get the data from the store.
+
+now data will be displayed in the list but toggle button is not working
+
+## Dispatching Actions and Payloads
+
+useDispatch hook to dispatch the actions to the store so that the actions can be executed like toggle button and create a new todo

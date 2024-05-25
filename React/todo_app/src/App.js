@@ -2,6 +2,8 @@ import './App.css';
 import TodoForm from "./components/ToDoForm/TodoForm";
 import TodoList from "./components/ToDoList/TodoList";
 import { useState } from "react";
+import { Provider } from 'react-redux';
+import { store1 } from './redux/store';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -19,9 +21,10 @@ function App() {
   return (
     <div>
       <h1>To Do App</h1>
-      
-      <TodoForm onCreateTodo={createTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} />
+      <Provider store={store1}>
+        <TodoForm onCreateTodo={createTodo} />
+        <TodoList todos={todos} onToggle={toggleTodo} />
+      </Provider>
     </div>
   );
 }

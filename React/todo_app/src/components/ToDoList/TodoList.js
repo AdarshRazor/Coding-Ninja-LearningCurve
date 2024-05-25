@@ -1,6 +1,13 @@
 import "./TodoList.css";
 
-function ToDoList({todos, onToggle}) {
+//access the store state
+import { useSelector } from "react-redux";
+
+function ToDoList({ onToggle}) {
+
+  const todos = useSelector((state) => state.todos);
+
+
   return (
     <div className="container">
     <ul>

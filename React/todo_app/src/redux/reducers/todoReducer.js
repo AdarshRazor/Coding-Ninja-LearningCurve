@@ -2,7 +2,16 @@
 import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
 
 const initialState = {
-    todos: []
+    todos: [
+        {
+            text: 'Learn React',
+            completed: true
+        },
+        { 
+            text: 'Learn Redux',
+            completed: false
+        }
+    ]
 }
 
 // state and action as input
