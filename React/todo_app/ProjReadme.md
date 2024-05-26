@@ -44,4 +44,7 @@ now data will be displayed in the list but toggle button is not working
 
 ## Dispatching Actions and Payloads
 
-useDispatch hook to dispatch the actions to the store so that the actions can be executed like toggle button and create a new todo
+`useDispatch` hook to dispatch the actions to the store so that the actions can be executed like toggle button and create a new todo.
+
+we will be using dispatch in button 'create todo' > TodoForm.js
+since we send the data directly to store by calling the action creator

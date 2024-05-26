@@ -1,15 +1,22 @@
 import { useState } from "react";
 import "./TodoForm.css";
+import { useDispatch } from "react-redux";
+import { addTodo} from "../../redux/actions/todoActions";
 
 //functional component that takes onCreateTodo as a prop
-function ToDoForm({ onCreateTodo }) {
+function ToDoForm() {
   // Initializes a state variable todoText with an empty string. 
   const [todoText, setTodoText] = useState("");
 
+  // a hook to access the redux dispatch function
+  const dispatch = useDispatch()
+
   const handleSubmit = (e) => {
     e.preventDefault(); // orevent reloading the page
-    onCreateTodo(todoText); // function called with the current value of 'todoText'
+    //onCreateTodo(todoText); // function called with the current value of 'todoText'  -> now we dont need to have todo from parent coz we can directly send the value to the store.
     setTodoText(""); // reset the input value
+    dispatch(addTodo(todoText)); // dispatch the action to the store.
+    // todotext pass as arguement. function will be dispatched to the reducer and reducer will update the state
   };
 
   return (

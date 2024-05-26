@@ -1,5 +1,5 @@
 // reducers are pure functions and it doesnt depend on any external data
-import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from "../actions/todoActions";
 
 const initialState = {
     todos: [
@@ -41,6 +41,13 @@ export function todoReducer(state=initialState, action) {
                     }
                     return todo;
                 })
+            }
+        case REMOVE_TODO:
+            return {
+                ...state,
+                // filter method creates a new array excluding the to-do item at the index specified by action.index.
+                // _ represents the current to-do item. Since we don't need the item itself, we use _ to indicate it's unused.
+                todos: state.todos.filter((_, index) => index !== action.index)
             }
         default:
             return state;
