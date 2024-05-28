@@ -1,0 +1,7 @@
+some random giberish word
+
+there was a space above this line and below too
+
+name: john doe
+age: 99
+city: dreamworld
