@@ -12,3 +12,9 @@
 
 to install the particular version use 
 `npm i cors@2.8.5 dotenv@16.0.3`
+
+
+
+## Miscellaneous
+
+Add a invite code while registering a user

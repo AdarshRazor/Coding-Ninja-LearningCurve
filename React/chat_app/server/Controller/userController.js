@@ -57,6 +57,7 @@ const registerUser = async (req, res) => {
         // now we can send the data to the client
     
         res.status(200).json({_id: user._id, name, email, token});
+
     }catch(err) {
         console.log(err);
         //500 means server error
@@ -64,4 +65,33 @@ const registerUser = async (req, res) => {
     }
 }
 
-module.exports = {registerUser};
+
+// logging user
+
+const loginUser = async (req, res) => {
+    
+    // extract the email and password from the body
+    const {email, password} = req.body;
+
+    try {
+            // find a user
+    let user = await userModel.findOne({ email });
+    // if user does not exist then throw this error
+    if(!user) return res.status(422).json({error: 'invalid email or password'});
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    // if password is not valid then throw this error
+    if(!isValidPassword) return res.status(422).json({error: 'Something went wrong :p'});
+
+    const token = createToken(user._id);
+    // now we can send the data to the client
+    res.status(200).json({_id: user._id, name: user.name , email, token});
+    }catch(err){
+        console.log(err);
+        //500 means server error
+        res.status(500).json({error: err});
+    }
+}
+
+module.exports = {registerUser, loginUser};

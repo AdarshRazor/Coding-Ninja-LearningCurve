@@ -70,4 +70,18 @@ now send the request from postman to 'api/users/register' in below formate to te
     "password": "somerandompassword"
 }
 
-it will be saved in chatapp database under user collection coz in `userModel` we defined it as User
+it will be saved in chatapp database under user collection coz in `userModel` we defined it as User.
+
+## UserController
+
+now we create login user function
+
+once done create a login route
+
+## Testing
+
+now test the login method in postman
+
+## move to frontend
+
+now we move to frontend
