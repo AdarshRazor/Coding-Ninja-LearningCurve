@@ -13,7 +13,13 @@
 to install the particular version use 
 `npm i cors@2.8.5 dotenv@16.0.3`
 
+## Server Folder
 
+create the controller, routes, models
+
+## Client Folder
+
+create the front-end by installing React
 
 ## Miscellaneous
 
