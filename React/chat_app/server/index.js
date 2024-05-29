@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors'); // allow us to interact with frontend
 const mongoose = require('mongoose');
 require('dotenv').config();
+const userRoute = require('./Routes/userRoute')
 
 const app = express();
 
@@ -10,12 +11,12 @@ app.use(express.json());
 app.use(cors()); // add extra capabilities to app
 
 
-// Routes
+// Routes and middleware
 app.get('/', (req, res) => {
-    res.send('Hello World');
+    res.send('Hello World this is the page');
 })
 
-
+app.use('/api/users',userRoute)
 
 
 
