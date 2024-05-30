@@ -3,12 +3,12 @@
 }
 
 form {
-    padding: 10% 30%;
+    padding: 5% 30%;
 }
 
 @media only screen and (max-width: 768px) {
 
     form{
-        padding: 10% 10%;
+        padding: 5% 10%;
     }
 }

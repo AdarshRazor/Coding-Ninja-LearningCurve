@@ -30,15 +30,15 @@ const registerUser = async (req, res) => {
         let user = await userModel.findOne({ email });
     
         if(!name ||!email ||!password){
-            return res.status(422).json({error: 'please add all the fields'});
+            return res.status(422).json("please add all the fields");
         }
     
         if(!validator.isEmail(email)){
-            return res.status(422).json({error: 'please add a valid email'});
+            return res.status(422).json("please add a valid email");
         }
     
         if(password.length < 5){
-            return res.status(422).json({error: 'password should be atleast 6 characters'});
+            return res.status(422).json("password should be atleast 6 characters");
         }
 
         // if user exists then throw this msg
