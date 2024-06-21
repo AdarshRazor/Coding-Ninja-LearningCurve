@@ -10,6 +10,8 @@ function Navbar() {
             {/* <li className='navbar-items'><a href='#home'>Home</a></li> */}
             <li className='navbar-items'> <Link to="/text">Text</Link> </li>
             <li className='navbar-items'> <Link to="/">About</Link> </li>
+            <li className='navbar-items'> <Link to="/effect">useEffect</Link> </li>
+            <li className='navbar-items'> <Link to="/class">Class Text</Link> </li>
         </ul>
     </nav>
   )
