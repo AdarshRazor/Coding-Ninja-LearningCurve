@@ -19,9 +19,10 @@ const todoReducer = (state=initialState, action) => {
             return {...state, todos: [...state.todos, { text: action.payload, completed: false }]};
 
         case TOGGLE_TODO:
-            return {...state, todos: state.todos.map((todo, index)=>{
+            return {...state, 
+                todos: state.todos.map((todo, index)=>{
                 if (index === action.index){
-                    todo.completed =!todo.completed;
+                    return {...todo,completed: !todo.completed};
                 }
                 return todo;
             })}

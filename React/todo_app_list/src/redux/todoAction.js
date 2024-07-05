@@ -16,13 +16,13 @@ export const addtodo = (text) => (
 export const toggletodo = (index) => (
     {
         type: TOGGLE_TODO,
-        payload: index
+        index
     }
 );
 
 export const removetodo = (index) => (
     {
         type: REMOVE_TODO,
-        payload: index
+        index
     }
 );

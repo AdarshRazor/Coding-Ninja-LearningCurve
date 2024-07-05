@@ -5,3 +5,27 @@ h1 {
 button {
     margin: 1%;
 }
+
+.inputtext {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid blue;
+    color: antiquewhite; /* Adjust text color as needed */
+    padding: 10px 5px;
+    font-size: 1em;
+}
+
+.inputtext:focus {
+    outline: none;
+    border-bottom: 2px solid darkblue; /* Darker blue on focus for better visibility */
+}
+
+.inputtext::placeholder {
+    color: gray;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

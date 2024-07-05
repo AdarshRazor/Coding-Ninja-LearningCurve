@@ -7,3 +7,36 @@ span {
     margin: 1%;
 }
 
+.completed{
+    text-decoration: line-through;
+    color: rgba(93, 255, 52, 0.986);
+    font-size: 20px;
+}
+
+.pending{
+    color: yellow;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.wraplist {
+    background-color: #0F67B1;
+    color: white;
+    padding: 1px 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-inline: 10%;
+    margin-block: 5%;
+}
+
+.buton {
+    background-color: rgba(0, 110, 255, 0.781);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 2%;
+}

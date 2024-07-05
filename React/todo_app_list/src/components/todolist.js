@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch} from 'react-redux'
 import './todolist.css'
+import { toggletodo, removetodo } from '../redux/todoAction'
+import './todolist.css'
 
 
 function TodoList() {
@@ -11,11 +13,13 @@ function TodoList() {
   return (
     <div className='container'>
         <h1 className='my-5'>Items</h1>
+        <hr style={{color: 'white'}}/>
         <ul>
             {todos.map((todo, index) => (
-                <li key={todo.id}>
-                    <span>{todo.text}</span>
-                    <span>{todo.completed ? '✅': '⚠️'}</span>
+                <li class="wraplist" key={todo.id}>
+                    <span onClick={() => dispatch(toggletodo(index))}className={todo.completed ? 'completed':'pending'}>{todo.text}</span>
+
+                    <button class="buton" onClick={() => dispatch(removetodo(index))}>❌</button>
                 </li>
             )
         )}
