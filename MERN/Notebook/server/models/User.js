@@ -21,4 +21,7 @@ const UserSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('user', UserSchema);
+const User = mongoose.model('user', UserSchema);
+// Cannot create multiple users with the same email
+User.createIndexes()
+module.exports = User
