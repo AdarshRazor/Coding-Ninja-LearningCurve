@@ -3,6 +3,9 @@ import { useSelector, useDispatch} from 'react-redux'
 import './todolist.css'
 import { toggletodo, removetodo } from '../redux/todoAction'
 import './todolist.css'
+import box from '../static/checkbox.png';
+import checkbox from '../static/check.png';
+import Image from 'react-bootstrap/Image';
 
 
 function TodoList() {
@@ -12,14 +15,15 @@ function TodoList() {
     
   return (
     <div className='container'>
-        <h1 className='my-5'>Items</h1>
-        <hr style={{color: 'white'}}/>
+        <h1 className='my-3' style={{color: 'orange'}}>Items</h1>
+        <hr style={{color: 'black'}}/>
         <ul>
             {todos.map((todo, index) => (
                 <li class="wraplist" key={todo.id}>
-                    <span onClick={() => dispatch(toggletodo(index))}className={todo.completed ? 'completed':'pending'}>{todo.text}</span>
+                    <Image src={todo.completed ? checkbox : box } alt="check Image" className='checkboxthing' onClick={() => dispatch(toggletodo(index))}/>
+                    <span className={todo.completed ? 'completed':'pending'}>{todo.text}</span>
 
-                    <button class="buton" onClick={() => dispatch(removetodo(index))}>❌</button>
+                    <span class='closeicon' onClick={() => dispatch(removetodo(index))}>x</span>
                 </li>
             )
         )}
