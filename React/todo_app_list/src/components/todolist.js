@@ -15,14 +15,13 @@ function TodoList() {
     
   return (
     <div className='container'>
-        <h1 className='my-3' style={{color: 'orange'}}>Items</h1>
+        <h1 className='my-3' style={{color: 'green', fontWeight: 'bold'}}>Items</h1>
         <hr style={{color: 'black'}}/>
         <ul>
             {todos.map((todo, index) => (
                 <li class="wraplist" key={todo.id}>
                     <Image src={todo.completed ? checkbox : box } alt="check Image" className='checkboxthing' onClick={() => dispatch(toggletodo(index))}/>
                     <span className={todo.completed ? 'completed':'pending'}>{todo.text}</span>
-
                     <span class='closeicon' onClick={() => dispatch(removetodo(index))}>x</span>
                 </li>
             )
