@@ -78,9 +78,8 @@ router.put("/updatenote/:id",
 // Only those who area logged in
 router.delete("/deletenote/:id",
   fetchuser, async (req, res) => {
-    const {title, description, tag} = req.body;
-
-    // Find the note to be delete and delete it
+    try {
+      // Find the note to be delete and delete it
     let note = await Notes.findById(req.params.id)
     if (!note) return res.status(404).json({ message: "Note not found" });
 
@@ -91,6 +90,11 @@ router.delete("/deletenote/:id",
 
     note = await Notes.findByIdAndDelete(req.params.id);
     res.json({"Success":"Sucessfully deleted", note: note});
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: error.message });
+      // res.status(500).send({ message: "Internal Server Error" });
+    }
   
 });
 
