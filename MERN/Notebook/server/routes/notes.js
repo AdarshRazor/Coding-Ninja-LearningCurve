@@ -49,4 +49,49 @@ router.post(
   }
 );
 
+// ROUTE 3 : Update note using: PUT "/api/notes/updatenote". Login required
+// Only those who area logged in
+router.put("/updatenote/:id",
+  fetchuser, async (req, res) => {
+    const {title, description, tag} = req.body;
+    // create a newNote object
+    const newNote = {}
+
+    if (title) {newNote.title = title};
+    if (description) {newNote.description = description};
+    if (tag) {newNote.tag = tag};
+
+    // Find the note to be updated and update it
+    let note = await Notes.findById(req.params.id)
+    if (!note) return res.status(404).json({ message: "Note not found" });
+
+    if (req.user.id.toString()!== note.user.toString()) {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+
+    note = await Notes.findByIdAndUpdate(req.params.id, newNote, { new: true });
+    res.json(note);
+  
+});
+
+// ROUTE 4 : Update note using: DELETE "/api/notes/deletenote". Login required
+// Only those who area logged in
+router.delete("/deletenote/:id",
+  fetchuser, async (req, res) => {
+    const {title, description, tag} = req.body;
+
+    // Find the note to be delete and delete it
+    let note = await Notes.findById(req.params.id)
+    if (!note) return res.status(404).json({ message: "Note not found" });
+
+    // Delete if the user owns this note
+    if (req.user.id.toString()!== note.user.toString()) {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+
+    note = await Notes.findByIdAndDelete(req.params.id);
+    res.json({"Success":"Sucessfully deleted", note: note});
+  
+});
+
 module.exports = router;
