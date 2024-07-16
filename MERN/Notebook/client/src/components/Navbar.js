@@ -4,11 +4,6 @@ import { Outlet, NavLink, useLocation } from 'react-router-dom';
 function Navbar() {
     let location = useLocation();
 
-    React.useEffect(() => {
-        // Google Analytics
-        console.log(location.pathname)
-      }, [location]);
-
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
