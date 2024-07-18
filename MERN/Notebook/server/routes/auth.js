@@ -101,12 +101,13 @@ router.post(
       // compare password
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
+        success = false
         return res
           .status(400)
           .json({
             errors: [
               {
-                msg: "Invalid Credentials, Please try to login with correct credentials",
+                success, msg: "Invalid Credentials, Please try to login with correct credentials",
               },
             ],
           });
@@ -114,7 +115,9 @@ router.post(
 
       const data = { user: { id: user.id } };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ authToken: authToken });
+      success = true
+      res.json({ success, authToken: authToken });
+
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });

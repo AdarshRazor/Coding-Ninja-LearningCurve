@@ -42,6 +42,9 @@ function Notes() {
     <>
       <div className="row my-3">
         <h1>Your Notes</h1>
+        <div className="container mx-3 my-2">
+          {notes.length === 0 && 'No notes available'}
+        </div>
         {notes.map((note) => (
           <div key={note._id} className="col-md-3">
             <div className="card my-3">

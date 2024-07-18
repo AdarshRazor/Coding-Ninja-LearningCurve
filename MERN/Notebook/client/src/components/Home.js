@@ -6,11 +6,12 @@ function Home() {
   const context = useContext(noteContext);
   const { addNote } = context;
 
-  const [note, setnote] = useState({title: "", description: "", tag: "default"})
+  const [note, setnote] = useState({title: "", description: "", tag: ""})
 
   const handleclick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag)
+    setnote({title: "", description: "", tag: ""})
   };
 
   const onChange = (e) => {
@@ -32,6 +33,7 @@ function Home() {
               className="form-control"
               id="title"
               name="title"
+              value={note.title}
               aria-describedby="emailHelp"
               onChange={onChange}
             />
@@ -44,6 +46,7 @@ function Home() {
               type="text"
               className="form-control"
               id="description"
+              value={note.description}
               name="description"
               onChange={onChange}
             />
@@ -56,6 +59,7 @@ function Home() {
               type="text"
               className="form-control"
               id="tag"
+              value={note.tag}
               name="tag"
               onChange={onChange}
             />
