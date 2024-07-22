@@ -21,6 +21,7 @@ router.post(
   ],
   async (req, res) => {
     //if there are errors, return Bad request and the errors
+    success = false
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -33,7 +34,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: "Email already exists" }] });
+          .json({ errors: [{ success, msg: "Email already exists" }] });
       }
 
       // encrpt the password
@@ -52,15 +53,10 @@ router.post(
 
       const data = { user: { id: user.id } };
       const authToken = jwt.sign(data, JWT_SECRET);
+      success = true
 
-      res.json({
-        token: authToken,
-        // user: {
-        //   id: user.id,
-        //   name: user.name,
-        //   email: user.email
-        // }
-      });
+      // res.json({success, token: authToken});
+      res.json({ success, authToken, user: { name: user.name } });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });
@@ -116,7 +112,8 @@ router.post(
       const data = { user: { id: user.id } };
       const authToken = jwt.sign(data, JWT_SECRET);
       success = true
-      res.json({ success, authToken: authToken });
+      // res.json({ success, authToken: authToken });
+      res.json({ success, authToken, user: { name: user.name } });
 
     } catch (error) {
       console.error(error);

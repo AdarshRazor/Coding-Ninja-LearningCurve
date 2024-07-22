@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate }  from "react-router-dom";
 
-function Login() {
+function Login(props) {
 
     const [credentials, setcredentials] = useState({email: "", password: ""})
     let history = useNavigate()
@@ -16,16 +16,21 @@ function Login() {
         },
         body: JSON.stringify({email: credentials.email, password: credentials.password}),
       });
+
       const json = await response.json();
-      console.log(json)
+      console.log('Login response:', json);
+
       if (json.success){
         // redirect
-        localStorage.setItem("token", json.authtoken)
+        localStorage.setItem('token', json.authToken);
+        localStorage.setItem('userName', json.user.name); // Save user name
+        const userName = localStorage.getItem('userName');
+        props.showAlert(`Welcome ${userName}`, "success")
         history("/")
       }
       else {
         // display error message
-        alert('Invalid credentials')
+        props.showAlert("Invalid credentials", "danger")
       }
     };
 
@@ -34,7 +39,8 @@ function Login() {
       }
 
   return (
-    <div className="container">
+    <div className="container my-3">
+      <h2>Login Here</h2>
       <form onSubmit={handSubmit}>
         <div className="form-group my-3">
           <label htmlFor="email">Email address</label>

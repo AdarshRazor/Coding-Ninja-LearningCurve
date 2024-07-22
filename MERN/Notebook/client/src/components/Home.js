@@ -2,7 +2,9 @@ import React, { useContext, useState } from "react";
 import Notes from "./Notes";
 import noteContext from "../context/noteContext";
 
-function Home() {
+function Home(props) {
+
+  const {showAlert} = props
   const context = useContext(noteContext);
   const { addNote } = context;
 
@@ -11,11 +13,11 @@ function Home() {
   const handleclick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag)
+    props.showAlert("Todo Added", "success")
     setnote({title: "", description: "", tag: ""})
   };
 
   const onChange = (e) => {
-    console.log("Clicked asdasdasd");
     setnote({...note, [e.target.name]: e.target.value});
   }
 
@@ -75,7 +77,7 @@ function Home() {
         </form>
       </div>
 
-      <Notes />
+      <Notes showAlert={showAlert}/>
     </div>
   );
 }

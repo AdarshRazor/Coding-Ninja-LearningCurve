@@ -1,17 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import noteContext from "../context/noteContext";
 import { Modal } from "react-bootstrap";
+import {useNavigate }  from "react-router-dom";
 
-function Notes() {
+function Notes(props) {
+  let history = useNavigate()
   // Get context from noteContext
   const context = useContext(noteContext);
   // destructure context
   const { notes, deleteNote, getNotes, editNote } = context;
 
-  const [note, setnote] = useState({id: "", etitle: "", edescription: "", etag: "default"})
+  const [note, setnote] = useState({id: "", etitle: "", edescription: "", etag: ""})
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else{
+      props.showAlert("Please Login or Signup if you are a new user", "warning")
+      history("/login")
+    }
+    
     // eslint-disable-next-line
   }, []);
 
@@ -26,15 +35,20 @@ function Notes() {
     setShowModal(false);
   };
 
+  const handleDelete = (id) => {
+    deleteNote(id);
+    props.showAlert("Todo deleted", "danger")
+  };
+
   const handleSaveChanges = (e) => {
     // Implement logic to save changes to the note
     console.log("updating the note", note)
     editNote(note.id, note.etitle, note.edescription, note.etag)
     setShowModal(false);
+    props.showAlert("Todo updated", "warning")
   };
 
   const onChange = (e) => {
-    console.log("Clicked");
     setnote({...note, [e.target.name]: e.target.value});
   }
 
@@ -56,7 +70,7 @@ function Notes() {
                 <i
                   className="fa-solid fa-trash-can m-2"
                   onClick={() => {
-                    deleteNote(note._id);
+                    handleDelete(note._id);
                   }}
                 ></i>
                 <i

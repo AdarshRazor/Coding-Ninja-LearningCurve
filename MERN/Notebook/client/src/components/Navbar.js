@@ -1,8 +1,19 @@
 import React from 'react'
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
+import {useNavigate }  from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
-function Navbar() {
+function Navbar(props) {
     let location = useLocation();
+    let history = useNavigate()
+
+    const handlelogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName');
+        history('/login');
+        props.showAlert("Logout successfully", "success")
+    }
+    const userName = localStorage.getItem('userName');
 
   return (
     <>
@@ -21,10 +32,13 @@ function Navbar() {
             <NavLink className={`nav-link ${location.pathname === '/about' ? "active":""}`} to="/about">About</NavLink>
             </li>
         </ul>
-        <form className="d-flex">
+        {!localStorage.getItem('token')?<form className="d-flex">
             <NavLink className="btn btn-primary mx-2" to="/login" role="button">Login</NavLink>
             <NavLink className="btn btn-success mx-2" to="/signup" role="button">Signup</NavLink>
-        </form>
+        </form>: <form className="d-flex">
+            <Button disabled className="btn btn-light mx-2">Login as {userName}</Button>
+            <Button onClick={handlelogout} className="btn btn-danger mx-2" to="/Login" role="button">Logout</Button>
+        </form>}
         </div>
     </div>
     </nav>
