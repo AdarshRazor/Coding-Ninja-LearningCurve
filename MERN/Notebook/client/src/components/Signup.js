@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import {useNavigate }  from "react-router-dom";
 
 function Signup(props) {
-  const [credentials, setcredentials] = useState({name: "", email: "", password: ""});
+  const [credentials, setcredentials] = useState({name: "", email: "", password: "", invite: ""});
   let history = useNavigate();
 
   const handSubmit = async (e) => {
     e.preventDefault();
+
+    if (credentials.invite !== "244466666") {
+      props.showAlert("Invalid invite code", "danger");
+      return; // Stop form submission if invite code is incorrect
+    }
     // TODO: handle form submission
     const response = await fetch("http://localhost:5000/api/auth/createuser", {
       method: "POST",
@@ -20,7 +25,7 @@ function Signup(props) {
       }),
     });
     const json = await response.json();
-    console.log(json);
+
     if (json.success) {
       // redirect
       localStorage.setItem("token", json.authToken);
@@ -76,17 +81,17 @@ function Signup(props) {
             onChange={onChange}
           />
         </div>
-        {/* <div class="form-group my-2">
-          <label for="cpassword">Confirm Password</label>
+        <div class="form-group my-2">
+          <label for="cpassword">Invite Code</label>
           <input
-            type="password"
+            type="invite"
             class="form-control"
-            id="cpassword"
-            name="cpassword"
-            placeholder="Confirm Password"
+            id="invite"
+            name="invite"
+            placeholder="Invite Code"
             onChange={onChange}
           />
-        </div> */}
+        </div>
         <button type="submit" class="btn btn-primary my-2">
           Submit
         </button>

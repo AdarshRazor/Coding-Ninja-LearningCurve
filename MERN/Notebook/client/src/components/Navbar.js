@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import {useNavigate }  from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 
 function Navbar(props) {
     let location = useLocation();
@@ -36,8 +35,8 @@ function Navbar(props) {
             <NavLink className="btn btn-primary mx-2" to="/login" role="button">Login</NavLink>
             <NavLink className="btn btn-success mx-2" to="/signup" role="button">Signup</NavLink>
         </form>: <form className="d-flex">
-            <Button disabled className="btn btn-light mx-2">Login as {userName}</Button>
-            <Button onClick={handlelogout} className="btn btn-danger mx-2" to="/Login" role="button">Logout</Button>
+            <NavLink disabled className="btn btn-light mx-2">Login as {userName}</NavLink>
+            <NavLink onClick={handlelogout} className="btn btn-danger mx-2" to="/Login" role="button">Logout</NavLink>
         </form>}
         </div>
     </div>
