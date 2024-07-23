@@ -20,7 +20,7 @@ function Navbar() {
                 </li>
             </ul>
             <div className="d-flex" role="search">
-                <button disabled={true} className="btn btn-primary">Your Balance: {amount}</button>
+                <button disabled={true} className="btn btn-primary">Your Balance: {state.amount}</button>
             </div>
             </div>
         </div>
