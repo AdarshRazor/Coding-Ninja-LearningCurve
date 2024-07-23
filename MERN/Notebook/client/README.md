@@ -1,47 +1,70 @@
-# iNotebook (Notes of Cloud) 
+# Getting Started with Create React App
 
-A cloud-based sticky note app designed for speed and simplicity. With secure login and signup features powered by an exclusive invite code system, this app ensures that each user enjoys a private, individual space for their notes, free from prying eyes. Its minimalist design and lightning-fast performance make it the perfect tool for capturing and organizing your thoughts on the go.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Setting up the environment
+## Available Scripts
 
-* ### Playing with Variable
-    * server > **db.js** 
-    
-        Edit your **mongoURI** with your connection string. For example: `mongodb+srv://<username>:<password>@<cluster-address>/<database-name>?retryWrites=true&w=majority`
-    
-    * server > **PORT**
+In the project directory, you can run:
 
-        Change the desirable port on the server 
+### `npm start`
 
-    * server > routes > **JWT_SECRET**
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-        Provide your JWT credentials to the server so that you can create an authentication token for users. For example: `"Random@12324567899"`
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-* ### Miscellaneous
-    * client > src > components > **Signup.js** 
+### `npm test`
 
-        Change the `credentials.invite !== "INVITE50"` to your desired invite code. 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-<br>
+### `npm run build`
 
-> ⚠️ Remember to change all the `http://localhost:5000` to the server link otherwise the server will fail.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Starting the server
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-To start the server visit **client** and ensure that **package.json** is available. 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-`npm install` to install the required packages. (Do the same thing with the server folder.)
+### `npm run eject`
 
-```powershell
-npm install
-```
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-After returning to client folder execute `run both` because we are defining both to run the server and the client at the same time using **concurrently (npm package)**.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```powershell
-npm run both
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## Troubleshooting 
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-_If you found this repo then I think you should do the troubleshooting by yourself. There is no easy way or shortcut to learning._
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
