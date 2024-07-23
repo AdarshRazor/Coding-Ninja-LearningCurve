@@ -18,7 +18,6 @@ function Login(props) {
       });
 
       const json = await response.json();
-      console.log('Login response:', json);
 
       if (json.success){
         // redirect

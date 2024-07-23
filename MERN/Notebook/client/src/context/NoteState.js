@@ -10,8 +10,7 @@ const NoteState = (props) => {
   const getNotes = async () => {
     // API call
     try {
-      const token = localStorage.getItem('token');
-      console.log('Token:', token); // Log the token value
+      // console.log('Token:', token); // Log the token value
 
       const response = await fetch(`${host}/api/notes/fetchallnotes`, {
         method: "GET",
@@ -21,7 +20,7 @@ const NoteState = (props) => {
         }
       });
       const json = await response.json();
-      console.log('Fetched notes:', json);
+      // console.log('Fetched notes:', json);
 
       if (Array.isArray(json)) {
         setnotes(json);
@@ -67,7 +66,7 @@ const NoteState = (props) => {
     console.log(json)
 
     // Filter the notes array to keep only the ones that don't match the given id
-    console.log("Deleteing note with id" +  id)
+    // console.log("Deleteing note with id" +  id)
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });

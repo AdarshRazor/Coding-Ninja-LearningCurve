@@ -42,7 +42,6 @@ function Notes(props) {
 
   const handleSaveChanges = (e) => {
     // Implement logic to save changes to the note
-    console.log("updating the note", note)
     editNote(note.id, note.etitle, note.edescription, note.etag)
     setShowModal(false);
     props.showAlert("Todo updated", "warning")
