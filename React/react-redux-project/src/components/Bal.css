@@ -1,0 +1,17 @@
+.bal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 3rem;
+    color: rgb(206, 5, 5);
+    font-weight: 800;
+}
+
+.but{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
