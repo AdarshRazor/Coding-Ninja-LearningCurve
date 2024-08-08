@@ -5,4 +5,8 @@ const app =  express();
 
 app.use(express.static('src/views'))
 
+app.get(('/'), (req, res) => {
+    res.send('Hello World!')
+})
+
 app.listen(PORT)
