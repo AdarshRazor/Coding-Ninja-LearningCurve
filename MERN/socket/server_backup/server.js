@@ -1,5 +1,5 @@
 const express = require('express');
-const PORT = 5000
+const PORT = 3000
 const path = require('path');
 const {Server} = require('socket.io');
 const cors = require('cors')
@@ -27,16 +27,7 @@ io.on('connection', (socket) => {
     
     socket.on('join', (user)=> {
         // broadcast this username to all the clients
-        socket.emit("message", { text: `Welcome, ${data.username}!` });
-        
-        // Broadcast a message to all other users in the same room
-        socket.broadcast.to(data.room).emit("message", {
-            type: "join",
-            text: `${data.username} has joined the room.`
-        });
-
-        // Join the room
-        socket.join(data.room);
+        socket.username = user
     })
 
     // load old messages
@@ -44,9 +35,8 @@ io.on('connection', (socket) => {
         socket.emit('load_messages', messages)
     })
 
-    // new msg
     socket.on('new_msg', (message)=>{
-        
+
         let userMessage = {
             username: socket.username,
             message: message,
@@ -61,6 +51,7 @@ io.on('connection', (socket) => {
         })
 
         newChat.save()
+
 
         // broadcast this message to all the clients
         socket.broadcast.emit('broadcast_msg', userMessage)
